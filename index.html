@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VastoraTech - Medical Web Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #fff;
+      color: #16222D;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    :root {
+      --blue-50: #F4F8FC;
+      --blue-100: #E2EEF9;
+      --blue-200: #C7DDF1;
+      --blue-400: #5F95C9;
+      --blue-500: #3E78B2;
+      --blue-600: #235A92;
+      --blue-700: #163F69;
+      --blue-800: #0D2C49;
+      --gray-300: #D5DDE5;
+      --gray-500: #71808E;
+      --gray-700: #3E4D5C;
+      --gray-900: #16222D;
+      --radius: 18px;
+      --shadow-card: 0 8px 30px rgba(13, 44, 73, .06);
+      --shadow-hover: 0 18px 60px rgba(13, 44, 73, .12);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      background: rgba(255, 255, 255, .95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(35, 90, 146, .08);
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--blue-700);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--blue-500);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-700);
+      font-size: .92rem;
+      font-weight: 500;
+      transition: .3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue-600);
+    }
+
+    .nav-btn {
+      padding: .7rem 1.5rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+      color: white !important;
+      font-weight: 600;
+    }
+
+    .nav-btn:hover {
+      opacity: .9;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 130px 6% 80px;
+      background: linear-gradient(170deg, #fff 0%, #f5f9fd 60%, #edf4fb 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(95, 149, 201, .1), transparent 70%);
+      top: -250px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    .hero-wrap {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .45rem .95rem;
+      border-radius: 50px;
+      background: var(--blue-100);
+      color: var(--blue-700);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue-500);
+    }
+
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      line-height: 1.12;
+      margin-bottom: 1.3rem;
+      color: var(--gray-900);
+      letter-spacing: -.03em;
+    }
+
+    .hero h1 em {
+      color: var(--blue-600);
+      font-style: italic;
+    }
+
+    .hero>.hero-wrap>div>p {
+      font-size: 1rem;
+      color: var(--gray-500);
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: .9rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.8rem;
+    }
+
+    .btn-primary {
+      padding: .9rem 1.9rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: .3s;
+      box-shadow: 0 8px 25px rgba(22, 63, 105, .2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      padding: .9rem 1.9rem;
+      border-radius: 50px;
+      border: 1.5px solid var(--blue-200);
+      color: var(--blue-700);
+      text-decoration: none;
+      font-weight: 600;
+      transition: .3s;
+    }
+
+    .btn-outline:hover {
+      background: var(--blue-50);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat h3 {
+      font-size: 2rem;
+      color: var(--blue-700);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .stat p {
+      margin: 0;
+      font-size: .85rem;
+      color: var(--gray-500);
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 26px;
+      box-shadow: 0 20px 70px rgba(13, 44, 73, .14);
+    }
+
+    .hero-card {
+      position: absolute;
+      left: -35px;
+      bottom: 25px;
+      background: white;
+      padding: 1.1rem 1.4rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-hover);
+    }
+
+    .hero-card h4 {
+      color: var(--blue-700);
+      margin-bottom: .15rem;
+      font-size: .95rem;
+    }
+
+    .hero-card p {
+      margin: 0;
+      font-size: .8rem;
+      color: var(--gray-500);
+    }
+
+    .hero-mini {
+      position: absolute;
+      right: -15px;
+      top: 25px;
+      background: var(--blue-700);
+      color: white;
+      padding: .9rem 1.2rem;
+      border-radius: 16px;
+    }
+
+    .hero-mini h3 {
+      font-size: 1.6rem;
+    }
+
+    .hero-mini span {
+      font-size: .78rem;
+      opacity: .8;
+    }
+
+    /* TICKER */
+    .ticker {
+      background: var(--blue-700);
+      color: white;
+      overflow: hidden;
+      padding: .9rem 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      gap: 3.5rem;
+      animation: ticker 25s linear infinite;
+    }
+
+    .ticker-track span {
+      white-space: nowrap;
+      font-size: .88rem;
+    }
+
+    @keyframes ticker {
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* GENERAL */
+    section {
+      padding: 5.5rem 6%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-tag {
+      color: var(--blue-600);
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: .8rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: .8rem;
+      letter-spacing: -.025em;
+    }
+
+    .section-sub {
+      color: var(--gray-500);
+      max-width: 620px;
+      font-size: .97rem;
+    }
+
+    /* SERVICES */
+    .services {
+      background: #f8fbff;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-top: 3.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: .35s;
+      border: 1px solid rgba(35, 90, 146, .07);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1.8rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--blue-100);
+      color: var(--blue-700);
+      padding: .3rem .85rem;
+      border-radius: 50px;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-bottom: .9rem;
+    }
+
+    .card h3 {
+      margin-bottom: .6rem;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      color: var(--gray-500);
+      font-size: .92rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: var(--blue-600);
+      font-weight: 700;
+      font-size: .92rem;
+    }
+
+    /* RESULTS */
+    .results {
+      background: linear-gradient(135deg, var(--blue-700), var(--blue-800));
+      color: white;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .result-grid h2 {
+      font-size: 3.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .result-grid p {
+      opacity: .75;
+      font-size: .9rem;
+    }
+
+    /* PROCESS */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .process-card {
+      text-align: center;
+    }
+
+    .process-num {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.3rem;
+      font-size: 1.3rem;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 8px 22px rgba(22, 63, 105, .2);
+    }
+
+    .process-card h4 {
+      margin-bottom: .6rem;
+      font-size: 1rem;
+    }
+
+    .process-card p {
+      color: var(--gray-500);
+      font-size: .88rem;
+    }
+
+    /* PORTFOLIO */
+    .portfolio {
+      background: #f9fbfd;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-top: 3.5rem;
+    }
+
+    .portfolio-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .portfolio-card img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      transition: .5s;
+    }
+
+    .portfolio-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13, 44, 73, .85), transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.8rem;
+    }
+
+    .overlay h3 {
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+    }
+
+    .overlay p {
+      color: rgba(255, 255, 255, .7);
+      font-size: .85rem;
+    }
+
+    /* TESTIMONIAL */
+    .testimonial {
+      max-width: 820px;
+      margin: auto;
+      background: white;
+      border-radius: 26px;
+      padding: 3.5rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(35, 90, 146, .07);
+      text-align: center;
+    }
+
+    .testimonial h1 {
+      font-size: 4.5rem;
+      color: var(--blue-200);
+      line-height: 1;
+    }
+
+    .testimonial p {
+      font-size: 1.1rem;
+      color: var(--gray-700);
+      line-height: 1.95;
+      margin-bottom: 1.8rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .9rem;
+    }
+
+    .author img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+    }
+
+    /* FAQ */
+    .faq {
+      background: #f8fbff;
+    }
+
+    .faq-list {
+      margin-top: 3.5rem;
+      max-width: 820px;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 16px;
+      margin-bottom: .9rem;
+      overflow: hidden;
+      border: 1px solid rgba(35, 90, 146, .07);
+    }
+
+    .faq-question {
+      padding: 1.3rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: .95rem;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: .4s;
+    }
+
+    .faq-answer p {
+      padding: 0 1.5rem 1.4rem;
+      color: var(--gray-500);
+      font-size: .9rem;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 180px;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: linear-gradient(135deg, var(--blue-700), var(--blue-800));
+      color: white;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: .9rem;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+    }
+
+    .contact>.container>.contact-wrap>div>p {
+      color: rgba(255, 255, 255, .75);
+      font-size: .95rem;
+    }
+
+    .contact-box {
+      background: white;
+      padding: 2.2rem;
+      border-radius: 24px;
+      color: var(--gray-900);
+      box-shadow: 0 22px 65px rgba(0, 0, 0, .18);
+    }
+
+    .contact-box h3 {
+      margin-bottom: .4rem;
+      font-size: 1.15rem;
+    }
+
+    .contact-box p {
+      color: var(--gray-500);
+      margin-bottom: 1.6rem;
+      font-size: .88rem;
+    }
+
+    .form-group {
+      margin-bottom: .9rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: .9rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--gray-300);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--blue-400);
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-btn {
+      width: 100%;
+      padding: .95rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: .95rem;
+      transition: opacity .2s;
+    }
+
+    .form-btn:hover {
+      opacity: .9;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0B1824;
+      color: white;
+      padding: 4.5rem 6% 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-logo {
+      font-size: 1.65rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: .9rem;
+    }
+
+    .footer-logo span {
+      color: var(--blue-400);
+    }
+
+    .footer-about {
+      color: rgba(255, 255, 255, .55);
+      font-size: .9rem;
+      line-height: 1.85;
+    }
+
+    .footer-col h4 {
+      margin-bottom: .9rem;
+      font-size: .92rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: .7rem;
+    }
+
+    .footer-col a {
+      color: rgba(255, 255, 255, .6);
+      text-decoration: none;
+      font-size: .88rem;
+      transition: color .2s;
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .07);
+      padding-top: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: rgba(255, 255, 255, .45);
+      font-size: .85rem;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1100px) {
+
+      .hero-wrap,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .portfolio-grid,
+      .process-grid,
+      .result-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:768px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 110px;
+      }
+
+      .cards,
+      .portfolio-grid,
+      .process-grid,
+      .result-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .hero-mini {
+        display: none;
+      }
+
+      .hero-stats {
+        gap: 1.3rem;
+      }
+
+      .testimonial {
+        padding: 2rem;
+      }
+
+      section {
+        padding: 4.5rem 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">Vastora<span>Tech</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact" class="nav-btn">Free Consultation</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-wrap">
+      <div>
+        <div class="hero-tag">Healthcare Digital Solutions</div>
+        <h1>Websites that earn <em>patient trust</em> and grow your practice.</h1>
+        <p>We build clean, high-converting digital experiences for hospitals and clinics — designed to increase
+          credibility and patient inquiries.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">Book Free Consultation</a>
+          <a href="#portfolio" class="btn-outline">View Portfolio</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <h3>60+</h3>
+            <p>Projects Delivered</p>
+          </div>
+          <div class="stat">
+            <h3>98%</h3>
+            <p>Client Satisfaction</p>
+          </div>
+          <div class="stat">
+            <h3>7 Days</h3>
+            <p>Prototype Delivery</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="image/doct.jpg" alt="Healthcare">
+        <div class="hero-card">
+          <h4>+340% Inquiry Growth</h4>
+          <p>Average client result</p>
+        </div>
+        <div class="hero-mini">
+          <h3>60+</h3>
+          <span>Clinics Launched</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>Healthcare Websites</span><span>Hospital Platforms</span>
+      <span>Telemedicine Systems</span><span>Healthcare SEO</span>
+      <span>Doctor Booking Systems</span><span>Patient Portals</span>
+      <span>Healthcare Websites</span><span>Hospital Platforms</span>
+      <span>Telemedicine Systems</span><span>Healthcare SEO</span>
+      <span>Doctor Booking Systems</span><span>Patient Portals</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <span class="section-tag">Our Services</span>
+      <h2 class="section-title">Solutions built for healthcare growth.</h2>
+      <p class="section-sub">From design to development — everything your practice needs to perform online.</p>
+      <div class="cards">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80"
+            alt="">
+          <div class="card-body">
+            <span class="badge">Websites</span>
+            <h3>Medical Website Design</h3>
+            <p>Clean, mobile-first websites that build patient trust and drive appointment bookings.</p>
+            <a href="#contact">Get Started →</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80"
+            alt="">
+          <div class="card-body">
+            <span class="badge">Mobile Apps</span>
+            <h3>Doctor Mobile Apps</h3>
+            <p>iOS and Android apps with booking, reminders, and teleconsultation features.</p>
+            <a href="#contact">Get Started →</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=800&q=80"
+            alt="">
+          <div class="card-body">
+            <span class="badge">Management Systems</span>
+            <h3>Hospital Management System</h3>
+            <p>Secure, scalable platforms for hospitals, clinics, and multi-location networks.</p>
+            <a href="#contact">Get Started →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results">
+    <div class="container">
+      <div class="result-grid">
+        <div>
+          <h2>60+</h2>
+          <p>Projects Delivered</p>
+        </div>
+        <div>
+          <h2>98%</h2>
+          <p>Client Satisfaction</p>
+        </div>
+        <div>
+          <h2>7D</h2>
+          <p>Prototype Delivery</p>
+        </div>
+        <div>
+          <h2>24/7</h2>
+          <p>Support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <span class="section-tag">Our Process</span>
+      <h2 class="section-title">How we work.</h2>
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-num">01</div>
+          <h4>Discovery</h4>
+          <p>We understand your practice, goals, and target patients before anything else.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-num">02</div>
+          <h4>Design</h4>
+          <p>Professional UI/UX prototypes built to maximise trust and conversions.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-num">03</div>
+          <h4>Development</h4>
+          <p>Fast, secure, and mobile-optimised builds across all devices.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-num">04</div>
+          <h4>Launch & Support</h4>
+          <p>Ongoing support, SEO, and growth assistance after going live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="section-title">Recent work.</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80"
+            alt="">
+          <div class="overlay">
+            <div>
+              <h3>CityCare Clinic</h3>
+              <p>Doctor Booking Platform</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=800&q=80"
+            alt="">
+          <div class="overlay">
+            <div>
+              <h3>MediCore HMS</h3>
+              <p>Hospital Management System</p>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80"
+            alt="">
+          <div class="overlay">
+            <div>
+              <h3>HealthPlus App</h3>
+              <p>Telemedicine Application</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-wrap">
+        <div>
+          <span class="section-tag" style="color:#BFD7F0;">Contact Us</span>
+          <h2>Let's grow your practice online.</h2>
+          <p>Tell us about your goals and we'll put together a clear, tailored strategy for your brand.</p>
+        </div>
+        <div class="contact-box">
+          <h3>Book a Free Consultation</h3>
+          <p>We'll get back to you within 24 hours.</p>
+          <div class="form-group"><input type="text" id="fullName" placeholder="Full Name"></div>
+          <div class="form-group"><input type="email" id="email" placeholder="Email Address"></div>
+          <div class="form-group"><input type="tel" id="phone" placeholder="Phone Number"></div>
+          <div class="form-group">
+            <select id="service">
+              <option value="">Select Service</option>
+              <option>Medical Website</option>
+              <option>Doctor App</option>
+              <option>Hospital Management System</option>
+              <option>Healthcare SEO</option>
+            </select>
+          </div>
+          <div class="form-group"><textarea id="message" placeholder="Tell us about your project"></textarea></div>
+          <button class="form-btn" onclick="sendToWhatsApp()">Send Inquiry via WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Vastora<span>Tech</span></div>
+        <p class="footer-about">Premium healthcare websites, apps, and management platforms — designed to grow your
+          practice and build patient trust.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Medical Websites</a></li>
+          <li><a href="#">Doctor Apps</a></li>
+          <li><a href="#">Healthcare SEO</a></li>
+          <li><a href="#">Telemedicine</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Process</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+918595658592">+91 85956 58592</a></li>
+          <li><a href="mailto:hello@vastorahealth.com">vastoratech@gmail.com</a></li>
+          <li><a href="#">New Delhi, India</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 VastoraTech. All Rights Reserved.</div>
+      <div>Premium Healthcare Digital Solutions.</div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('active'); });
+        item.classList.toggle('active');
+      });
+    });
+
+    // WhatsApp
+    function sendToWhatsApp() {
+      const whatsappNumber = "918595658592";
+      const name = document.getElementById("fullName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const service = document.getElementById("service").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !email || !phone || !service) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      const text =
+        `*New Inquiry — VastoraTech*\n\n` +
+        `👤 *Name:* ${name}\n` +
+        `📧 *Email:* ${email}\n` +
+        `📞 *Phone:* ${phone}\n` +
+        `🩺 *Service:* ${service}\n` +
+        `💬 *Message:* ${message || "N/A"}`;
+
+      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
+    }
+  </script>
+
+</body>
+
+</html>
