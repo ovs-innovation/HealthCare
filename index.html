@@ -1,1130 +1,1024 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VastoraTech - Medical Web Solutions</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: #fff;
-      color: #16222D;
-      overflow-x: hidden;
-      line-height: 1.7;
-    }
-
-    :root {
-      --blue-50: #F4F8FC;
-      --blue-100: #E2EEF9;
-      --blue-200: #C7DDF1;
-      --blue-400: #5F95C9;
-      --blue-500: #3E78B2;
-      --blue-600: #235A92;
-      --blue-700: #163F69;
-      --blue-800: #0D2C49;
-      --gray-300: #D5DDE5;
-      --gray-500: #71808E;
-      --gray-700: #3E4D5C;
-      --gray-900: #16222D;
-      --radius: 18px;
-      --shadow-card: 0 8px 30px rgba(13, 44, 73, .06);
-      --shadow-hover: 0 18px 60px rgba(13, 44, 73, .12);
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 999;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 6%;
-      background: rgba(255, 255, 255, .95);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(35, 90, 146, .08);
-    }
-
-    .logo {
-      font-size: 1.6rem;
-      font-family: 'Playfair Display', serif;
-      color: var(--blue-700);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .logo span {
-      color: var(--blue-500);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--gray-700);
-      font-size: .92rem;
-      font-weight: 500;
-      transition: .3s;
-    }
-
-    .nav-links a:hover {
-      color: var(--blue-600);
-    }
-
-    .nav-btn {
-      padding: .7rem 1.5rem;
-      border-radius: 50px;
-      background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
-      color: white !important;
-      font-weight: 600;
-    }
-
-    .nav-btn:hover {
-      opacity: .9;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      padding: 130px 6% 80px;
-      background: linear-gradient(170deg, #fff 0%, #f5f9fd 60%, #edf4fb 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(95, 149, 201, .1), transparent 70%);
-      top: -250px;
-      right: -150px;
-      pointer-events: none;
-    }
-
-    .hero-wrap {
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .45rem .95rem;
-      border-radius: 50px;
-      background: var(--blue-100);
-      color: var(--blue-700);
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .05em;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-tag::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--blue-500);
-    }
-
-    .hero h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(2.4rem, 4.5vw, 4rem);
-      line-height: 1.12;
-      margin-bottom: 1.3rem;
-      color: var(--gray-900);
-      letter-spacing: -.03em;
-    }
-
-    .hero h1 em {
-      color: var(--blue-600);
-      font-style: italic;
-    }
-
-    .hero>.hero-wrap>div>p {
-      font-size: 1rem;
-      color: var(--gray-500);
-      max-width: 520px;
-      margin-bottom: 2rem;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: .9rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.8rem;
-    }
-
-    .btn-primary {
-      padding: .9rem 1.9rem;
-      border-radius: 50px;
-      background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: .3s;
-      box-shadow: 0 8px 25px rgba(22, 63, 105, .2);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      padding: .9rem 1.9rem;
-      border-radius: 50px;
-      border: 1.5px solid var(--blue-200);
-      color: var(--blue-700);
-      text-decoration: none;
-      font-weight: 600;
-      transition: .3s;
-    }
-
-    .btn-outline:hover {
-      background: var(--blue-50);
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-    }
-
-    .stat h3 {
-      font-size: 2rem;
-      color: var(--blue-700);
-      font-family: 'Playfair Display', serif;
-    }
-
-    .stat p {
-      margin: 0;
-      font-size: .85rem;
-      color: var(--gray-500);
-    }
-
-    .hero-image {
-      position: relative;
-    }
-
-    .hero-image img {
-      width: 100%;
-      border-radius: 26px;
-      box-shadow: 0 20px 70px rgba(13, 44, 73, .14);
-    }
-
-    .hero-card {
-      position: absolute;
-      left: -35px;
-      bottom: 25px;
-      background: white;
-      padding: 1.1rem 1.4rem;
-      border-radius: 16px;
-      box-shadow: var(--shadow-hover);
-    }
-
-    .hero-card h4 {
-      color: var(--blue-700);
-      margin-bottom: .15rem;
-      font-size: .95rem;
-    }
-
-    .hero-card p {
-      margin: 0;
-      font-size: .8rem;
-      color: var(--gray-500);
-    }
-
-    .hero-mini {
-      position: absolute;
-      right: -15px;
-      top: 25px;
-      background: var(--blue-700);
-      color: white;
-      padding: .9rem 1.2rem;
-      border-radius: 16px;
-    }
-
-    .hero-mini h3 {
-      font-size: 1.6rem;
-    }
-
-    .hero-mini span {
-      font-size: .78rem;
-      opacity: .8;
-    }
-
-    /* TICKER */
-    .ticker {
-      background: var(--blue-700);
-      color: white;
-      overflow: hidden;
-      padding: .9rem 0;
-    }
-
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      gap: 3.5rem;
-      animation: ticker 25s linear infinite;
-    }
-
-    .ticker-track span {
-      white-space: nowrap;
-      font-size: .88rem;
-    }
-
-    @keyframes ticker {
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* GENERAL */
-    section {
-      padding: 5.5rem 6%;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section-tag {
-      color: var(--blue-600);
-      font-size: .78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: .8rem;
-      display: block;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      line-height: 1.2;
-      margin-bottom: .8rem;
-      letter-spacing: -.025em;
-    }
-
-    .section-sub {
-      color: var(--gray-500);
-      max-width: 620px;
-      font-size: .97rem;
-    }
-
-    /* SERVICES */
-    .services {
-      background: #f8fbff;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
-      margin-top: 3.5rem;
-    }
-
-    .card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
-      transition: .35s;
-      border: 1px solid rgba(35, 90, 146, .07);
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .card img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 1.8rem;
-    }
-
-    .badge {
-      display: inline-block;
-      background: var(--blue-100);
-      color: var(--blue-700);
-      padding: .3rem .85rem;
-      border-radius: 50px;
-      font-size: .72rem;
-      font-weight: 700;
-      margin-bottom: .9rem;
-    }
-
-    .card h3 {
-      margin-bottom: .6rem;
-      font-size: 1.1rem;
-    }
-
-    .card p {
-      color: var(--gray-500);
-      font-size: .92rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .card a {
-      text-decoration: none;
-      color: var(--blue-600);
-      font-weight: 700;
-      font-size: .92rem;
-    }
-
-    /* RESULTS */
-    .results {
-      background: linear-gradient(135deg, var(--blue-700), var(--blue-800));
-      color: white;
-    }
-
-    .result-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      text-align: center;
-    }
-
-    .result-grid h2 {
-      font-size: 3.5rem;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .result-grid p {
-      opacity: .75;
-      font-size: .9rem;
-    }
-
-    /* PROCESS */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      margin-top: 3.5rem;
-    }
-
-    .process-card {
-      text-align: center;
-    }
-
-    .process-num {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.3rem;
-      font-size: 1.3rem;
-      font-family: 'Playfair Display', serif;
-      box-shadow: 0 8px 22px rgba(22, 63, 105, .2);
-    }
-
-    .process-card h4 {
-      margin-bottom: .6rem;
-      font-size: 1rem;
-    }
-
-    .process-card p {
-      color: var(--gray-500);
-      font-size: .88rem;
-    }
-
-    /* PORTFOLIO */
-    .portfolio {
-      background: #f9fbfd;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
-      margin-top: 3.5rem;
-    }
-
-    .portfolio-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 22px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .portfolio-card img {
-      width: 100%;
-      height: 340px;
-      object-fit: cover;
-      transition: .5s;
-    }
-
-    .portfolio-card:hover img {
-      transform: scale(1.06);
-    }
-
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(13, 44, 73, .85), transparent 60%);
-      display: flex;
-      align-items: flex-end;
-      padding: 1.8rem;
-    }
-
-    .overlay h3 {
-      color: white;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-    }
-
-    .overlay p {
-      color: rgba(255, 255, 255, .7);
-      font-size: .85rem;
-    }
-
-    /* TESTIMONIAL */
-    .testimonial {
-      max-width: 820px;
-      margin: auto;
-      background: white;
-      border-radius: 26px;
-      padding: 3.5rem;
-      box-shadow: var(--shadow-card);
-      border: 1px solid rgba(35, 90, 146, .07);
-      text-align: center;
-    }
-
-    .testimonial h1 {
-      font-size: 4.5rem;
-      color: var(--blue-200);
-      line-height: 1;
-    }
-
-    .testimonial p {
-      font-size: 1.1rem;
-      color: var(--gray-700);
-      line-height: 1.95;
-      margin-bottom: 1.8rem;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .author {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .9rem;
-    }
-
-    .author img {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-    }
-
-    /* FAQ */
-    .faq {
-      background: #f8fbff;
-    }
-
-    .faq-list {
-      margin-top: 3.5rem;
-      max-width: 820px;
-    }
-
-    .faq-item {
-      background: white;
-      border-radius: 16px;
-      margin-bottom: .9rem;
-      overflow: hidden;
-      border: 1px solid rgba(35, 90, 146, .07);
-    }
-
-    .faq-question {
-      padding: 1.3rem 1.5rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      font-size: .95rem;
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: .4s;
-    }
-
-    .faq-answer p {
-      padding: 0 1.5rem 1.4rem;
-      color: var(--gray-500);
-      font-size: .9rem;
-    }
-
-    .faq-item.active .faq-answer {
-      max-height: 180px;
-    }
-
-    /* CONTACT */
-    .contact {
-      background: linear-gradient(135deg, var(--blue-700), var(--blue-800));
-      color: white;
-    }
-
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .contact h2 {
-      font-size: 2.5rem;
-      margin-bottom: .9rem;
-      font-family: 'Playfair Display', serif;
-      line-height: 1.2;
-    }
-
-    .contact>.container>.contact-wrap>div>p {
-      color: rgba(255, 255, 255, .75);
-      font-size: .95rem;
-    }
-
-    .contact-box {
-      background: white;
-      padding: 2.2rem;
-      border-radius: 24px;
-      color: var(--gray-900);
-      box-shadow: 0 22px 65px rgba(0, 0, 0, .18);
-    }
-
-    .contact-box h3 {
-      margin-bottom: .4rem;
-      font-size: 1.15rem;
-    }
-
-    .contact-box p {
-      color: var(--gray-500);
-      margin-bottom: 1.6rem;
-      font-size: .88rem;
-    }
-
-    .form-group {
-      margin-bottom: .9rem;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: .9rem 1rem;
-      border-radius: 12px;
-      border: 1px solid var(--gray-300);
-      font-family: 'DM Sans', sans-serif;
-      font-size: .9rem;
-      outline: none;
-      transition: border-color .2s;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--blue-400);
-    }
-
-    .form-group textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .form-btn {
-      width: 100%;
-      padding: .95rem;
-      border: none;
-      border-radius: 50px;
-      background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: .95rem;
-      transition: opacity .2s;
-    }
-
-    .form-btn:hover {
-      opacity: .9;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #0B1824;
-      color: white;
-      padding: 4.5rem 6% 2rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-logo {
-      font-size: 1.65rem;
-      font-family: 'Playfair Display', serif;
-      margin-bottom: .9rem;
-    }
-
-    .footer-logo span {
-      color: var(--blue-400);
-    }
-
-    .footer-about {
-      color: rgba(255, 255, 255, .55);
-      font-size: .9rem;
-      line-height: 1.85;
-    }
-
-    .footer-col h4 {
-      margin-bottom: .9rem;
-      font-size: .92rem;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col li {
-      margin-bottom: .7rem;
-    }
-
-    .footer-col a {
-      color: rgba(255, 255, 255, .6);
-      text-decoration: none;
-      font-size: .88rem;
-      transition: color .2s;
-    }
-
-    .footer-col a:hover {
-      color: white;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, .07);
-      padding-top: 1.8rem;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      color: rgba(255, 255, 255, .45);
-      font-size: .85rem;
-    }
-
-    /* RESPONSIVE */
-    @media(max-width:1100px) {
-
-      .hero-wrap,
-      .contact-wrap {
-        grid-template-columns: 1fr;
-      }
-
-      .cards,
-      .portfolio-grid,
-      .process-grid,
-      .result-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media(max-width:768px) {
-      nav {
-        padding: 0 5%;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 110px;
-      }
-
-      .cards,
-      .portfolio-grid,
-      .process-grid,
-      .result-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card,
-      .hero-mini {
-        display: none;
-      }
-
-      .hero-stats {
-        gap: 1.3rem;
-      }
-
-      .testimonial {
-        padding: 2rem;
-      }
-
-      section {
-        padding: 4.5rem 5%;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vastora Health – Care. Simplified.</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0b7c6d;--teal-d:#055048;--teal-l:#13b09e;--teal-pale:#e5f6f4;
+  --accent:#f59e0b;--white:#fff;
+  --g50:#f7faf9;--g100:#edf4f2;--g200:#d4e7e3;--g500:#6b8e89;--g700:#2c4a46;--g900:#0f2420;
+  --fh:'DM Serif Display',serif;--fb:'DM Sans',sans-serif;
+  --r:14px;--sh:0 4px 24px rgba(11,124,109,.09);--shl:0 16px 56px rgba(11,124,109,.16);
+  --tr:.28s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--g900);background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--g100)}
+::-webkit-scrollbar-thumb{background:var(--teal-l);border-radius:99px}
+
+/* ─── NAV ─── */
+nav{
+  position:sticky;top:0;z-index:999;
+  background:rgba(255,255,255,.94);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--g200);
+  padding:0 6%;height:70px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:box-shadow var(--tr);
+}
+nav.scrolled{box-shadow:0 4px 28px rgba(11,124,109,.11)}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.logo-icon{
+  width:42px;height:42px;background:var(--teal);border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform var(--tr),background var(--tr);
+}
+.logo:hover .logo-icon{background:var(--teal-d);transform:rotate(-6deg) scale(1.07)}
+.logo-icon svg{width:22px;height:22px;fill:#fff}
+.logo-name{font-family:var(--fh);font-size:1.15rem;color:var(--teal-d);display:block;line-height:1.1}
+.logo-tag{font-size:.68rem;color:var(--g500);letter-spacing:.06em;font-weight:500}
+.nav-links{display:flex;list-style:none;gap:38px;align-items:center}
+.nav-links a{
+  text-decoration:none;font-size:.875rem;font-weight:600;color:var(--g500);
+  position:relative;padding-bottom:3px;transition:color var(--tr);
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
+  background:var(--teal);border-radius:2px;transition:width var(--tr);
+}
+.nav-links a:hover{color:var(--teal)}
+.nav-links a:hover::after{width:100%}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:11px 22px;border-radius:50px;font-weight:700;font-size:.855rem;
+  font-family:var(--fb);cursor:pointer;text-decoration:none;border:none;
+  transition:all var(--tr);letter-spacing:.01em;
+}
+.btn-primary{background:var(--teal);color:#fff}
+.btn-primary:hover{background:var(--teal-d);transform:translateY(-2px);box-shadow:0 10px 28px rgba(11,124,109,.32)}
+.btn-primary:active{transform:translateY(0)}
+.btn-outline{background:transparent;color:var(--teal);border:2px solid var(--teal)}
+.btn-outline:hover{background:var(--teal);color:#fff;transform:translateY(-2px);box-shadow:0 10px 28px rgba(11,124,109,.22)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--teal-d);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{
+  display:none;position:fixed;inset:70px 0 0 0;background:#fff;z-index:998;
+  padding:32px 6%;flex-direction:column;gap:0;
+  transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);
+  box-shadow:-8px 0 32px rgba(0,0,0,.07);
+}
+.mobile-nav.open{display:flex;transform:translateX(0)}
+.mobile-nav a{
+  font-size:1.05rem;font-weight:600;color:var(--g700);text-decoration:none;
+  padding:18px 0;border-bottom:1px solid var(--g100);transition:color var(--tr),padding-left var(--tr);
+}
+.mobile-nav a:hover{color:var(--teal);padding-left:8px}
+.mobile-nav .btn{margin-top:24px;justify-content:center}
+
+/* ─── HERO ─── */
+.hero{
+  background:linear-gradient(145deg,#f2fbf9 0%,#e6f6f3 45%,#d0ede9 100%);
+  min-height:calc(100vh - 70px);
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:48px;padding:64px 6% 48px;
+  position:relative;overflow:hidden;
+}
+.hero-blob{
+  position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;
+}
+.hero-blob-1{width:480px;height:480px;background:rgba(11,124,109,.09);top:-100px;right:-80px}
+.hero-blob-2{width:320px;height:320px;background:rgba(245,158,11,.07);bottom:-60px;left:-40px}
+.hero-content{position:relative;z-index:2}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--teal-d);color:#fff;
+  padding:8px 16px 8px 10px;border-radius:50px;
+  font-size:.78rem;font-weight:700;margin-bottom:26px;letter-spacing:.025em;
+}
+.hero-badge .stars{color:var(--accent);letter-spacing:1px}
+h1{
+  font-family:var(--fh);font-size:clamp(2.2rem,4vw,3.5rem);
+  line-height:1.12;color:var(--g700);margin-bottom:6px;
+}
+h1 em{color:var(--teal);font-style:italic}
+.highlight-pill{
+  display:inline-block;background:var(--teal);color:#fff;
+  padding:5px 18px;border-radius:8px;font-style:italic;margin-top:4px;
+}
+.hero-sub{font-size:1.02rem;color:var(--g500);margin:18px 0 30px;font-weight:400;line-height:1.6}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 18px;background:#fff;border:1.5px solid var(--g200);
+  border-radius:10px;font-size:.82rem;font-weight:700;color:var(--g700);
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+  transition:all var(--tr);cursor:default;
+}
+.hero-tag:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px);box-shadow:0 6px 18px rgba(11,124,109,.14)}
+.hero-tag svg{width:15px;height:15px;flex-shrink:0}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:50px;background:#22c55e;color:#fff;
+  font-weight:700;font-size:.855rem;text-decoration:none;
+  transition:all var(--tr);
+}
+.btn-wa:hover{background:#16a34a;transform:translateY(-2px);box-shadow:0 10px 28px rgba(34,197,94,.32)}
+
+/* ─── DASHBOARD MOCKUP ─── */
+/* =========================
+   HEALTHCARE HERO VISUAL
+========================= */
+
+.hero-visual{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.healthcare-card{
+  position:relative;
+  width:100%;
+  max-width:500px;
+}
+
+.doctor-card{
+  background:#fff;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 30px 70px rgba(11,124,109,.18);
+  animation:float 5s ease-in-out infinite;
+}
+
+
+.doctor-image{
+  height:330px;
+  overflow:hidden;
+}
+
+.doctor-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+.doctor-content{
+  padding:28px;
+}
+
+.doctor-content h3{
+  font-family:var(--fh);
+  color:var(--g700);
+  font-size:1.6rem;
+  margin-bottom:6px;
+}
+
+.doctor-content p{
+  color:var(--teal);
+  font-weight:600;
+  margin-bottom:18px;
+}
+
+.rating-box{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:22px;
+}
+
+.rating{
+  color:#f59e0b;
+  font-weight:700;
+}
+
+.online{
+  background:#dcfce7;
+  color:#16a34a;
+  padding:6px 12px;
+  border-radius:30px;
+  font-size:.75rem;
+  font-weight:700;
+}
+
+.doc-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.doc-stat{
+  background:#f8fbfb;
+  border-radius:12px;
+  text-align:center;
+  padding:12px;
+}
+
+.doc-stat strong{
+  display:block;
+  color:var(--teal);
+  font-size:1.3rem;
+}
+
+.doc-stat span{
+  color:var(--g500);
+  font-size:.78rem;
+}
+
+.floating-health{
+  position:absolute;
+  background:#fff;
+  padding:14px 18px;
+  border-radius:16px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  box-shadow:0 15px 35px rgba(0,0,0,.12);
+  min-width:220px;
+  transition:.3s;
+}
+
+.floating-health:hover{
+  transform:translateY(-4px);
+}
+
+.float-icon{
+  width:48px;
+  height:48px;
+  border-radius:12px;
+  background:var(--teal-pale);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.4rem;
+}
+
+.float-text small{
+  display:block;
+  color:var(--g500);
+  font-size:.75rem;
+}
+
+.float-text strong{
+  color:var(--g700);
+  font-size:.92rem;
+}
+
+.float1{
+  top:40px;
+  left:-70px;
+}
+
+.float2{
+  top:180px;
+  right:-80px;
+}
+
+.float3{
+  bottom:40px;
+  left:-50px;
+}
+
+@media(max-width:900px){
+
+  .floating-health{
+      position:relative;
+      left:auto;
+      right:auto;
+      top:auto;
+      bottom:auto;
+      margin:14px auto;
+      width:100%;
+      max-width:280px;
+  }
+
+  .doctor-image{
+      height:320px;
+  }
+}
+.fcrd-2{bottom:12%;left:-14px}
+.fcrd .ci{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+
+/* ─── SECTIONS ─── */
+section{padding:88px 6%}
+.stitle{text-align:center;margin-bottom:60px}
+.stitle h2{font-family:var(--fh);font-size:clamp(1.7rem,3vw,2.5rem);color:var(--g700);margin-bottom:12px;line-height:1.25}
+.stitle h2 span{color:var(--teal);font-style:italic}
+.stitle p{color:var(--g500);font-size:.97rem;max-width:540px;margin:0 auto;line-height:1.7}
+.stag{
+  display:inline-block;padding:5px 16px;border-radius:50px;
+  background:var(--teal-pale);color:var(--teal);
+  font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:16px;
+}
+
+/* ─── PROBLEMS ─── */
+.problems{background:var(--g50)}
+.prob-subhead{
+  text-align:center;font-family:var(--fh);
+  font-size:clamp(1.4rem,2.8vw,2.1rem);
+  color:var(--g700);margin-bottom:52px;line-height:1.4;
+}
+.prob-subhead span{color:var(--teal);font-style:italic}
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:920px;margin:0 auto}
+.prob-card{
+  background:#fff;border-radius:18px;padding:30px;
+  box-shadow:var(--sh);border:1.5px solid var(--g200);
+  transition:all var(--tr);cursor:default;
+}
+.prob-card:hover{transform:translateY(-6px);box-shadow:var(--shl);border-color:var(--teal-pale)}
+.prob-icon{
+  width:54px;height:54px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:18px;position:relative;
+}
+.prob-icon .xbadge{
+  position:absolute;bottom:-4px;right:-4px;
+  width:18px;height:18px;background:#ef4444;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.prob-icon .xbadge::before{content:'✕';font-size:.55rem;color:#fff;font-weight:900}
+.prob-card h3{font-family:var(--fh);font-size:1.05rem;margin-bottom:10px;color:var(--g700)}
+.prob-card p{font-size:.84rem;color:var(--g500);line-height:1.65}
+
+/* ─── FEATURES ─── */
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feat-card{
+  background:#fff;border-radius:18px;padding:28px 18px;text-align:center;
+  border:1.5px solid var(--g200);box-shadow:var(--sh);
+  transition:all var(--tr);cursor:default;position:relative;overflow:hidden;
+}
+.feat-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--teal-pale),transparent);
+  opacity:0;transition:opacity var(--tr);
+}
+.feat-card:hover{transform:translateY(-8px);box-shadow:var(--shl);border-color:var(--teal-l)}
+.feat-card:hover::before{opacity:1}
+.feat-card:hover .ficon{background:var(--teal)}
+.feat-card:hover .ficon svg{fill:#fff}
+.ficon{
+  width:58px;height:58px;background:var(--teal-pale);border-radius:15px;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 14px;
+  transition:all var(--tr);position:relative;z-index:1;
+}
+.ficon svg{width:27px;height:27px;fill:var(--teal);transition:fill var(--tr)}
+.feat-card h3{font-family:var(--fh);font-size:.92rem;color:var(--g700);position:relative;z-index:1}
+
+/* ─── IMPACT ─── */
+.impact{
+  background:linear-gradient(135deg,var(--teal-d) 0%,var(--teal) 100%);
+  padding:72px 6%;display:grid;
+  grid-template-columns:1fr auto 1fr;align-items:center;gap:48px;
+  position:relative;overflow:hidden;
+}
+.impact::before{
+  content:'';position:absolute;top:-120px;right:-120px;
+  width:400px;height:400px;background:rgba(255,255,255,.04);border-radius:50%;
+}
+.impact::after{
+  content:'';position:absolute;bottom:-80px;left:10%;
+  width:240px;height:240px;background:rgba(255,255,255,.03);border-radius:50%;
+}
+.impact-txt h2{
+  font-family:var(--fh);font-size:clamp(1.7rem,3vw,2.5rem);
+  color:#fff;line-height:1.3;
+}
+.impact-txt h2 em{color:var(--accent);font-style:italic}
+.impact-pills{display:flex;flex-direction:column;gap:14px}
+.ipill{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);
+  border-radius:50px;padding:12px 20px;color:#fff;font-weight:600;font-size:.9rem;
+  backdrop-filter:blur(8px);
+  transition:all var(--tr);cursor:default;
+}
+.ipill:hover{background:rgba(255,255,255,.2);transform:translateX(6px)}
+.ipill .pico{
+  width:36px;height:36px;background:rgba(255,255,255,.18);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:1.05rem;
+  transition:transform var(--tr);
+}
+.ipill:hover .pico{transform:scale(1.15) rotate(-8deg)}
+.impact-doc{display:flex;justify-content:center}
+.idcard{
+  background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.22);
+  border-radius:22px;padding:28px 24px;text-align:center;backdrop-filter:blur(8px);
+  transition:all var(--tr);cursor:default;
+}
+.idcard:hover{background:rgba(255,255,255,.18);transform:scale(1.03)}
+.doc-av{
+  width:80px;height:80px;background:rgba(255,255,255,.2);
+  border-radius:50%;margin:0 auto 14px;
+  display:flex;align-items:center;justify-content:center;font-size:2.5rem;
+}
+.idcard p{color:rgba(255,255,255,.9);font-size:.88rem;font-weight:500;line-height:1.6}
+
+/* ─── WHY ─── */
+.why{background:var(--g50)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:64px}
+.why-card{
+  background:#fff;border-radius:18px;padding:30px 20px;text-align:center;
+  border:1.5px solid var(--g200);box-shadow:var(--sh);
+  transition:all var(--tr);cursor:default;
+}
+.why-card:hover{transform:translateY(-6px);box-shadow:var(--shl);border-color:var(--teal-l)}
+.why-card:hover .wico{background:var(--teal);color:#fff}
+.wico{
+  width:58px;height:58px;background:var(--teal-pale);border-radius:15px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.65rem;margin:0 auto 16px;transition:all var(--tr);
+}
+.why-card h3{font-family:var(--fh);font-size:1rem;color:var(--g700);margin-bottom:4px}
+.why-card p{font-size:.8rem;color:var(--g500)}
+
+/* ─── BRAND BANNER ─── */
+.brand-wrap{max-width:980px;margin:0 auto}
+.brand-banner{
+  background:#fff;border:1.5px solid var(--g200);border-radius:22px;
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:44px;padding:40px 48px;box-shadow:var(--sh);
+  transition:all var(--tr);
+}
+.brand-banner:hover{box-shadow:var(--shl);border-color:var(--g200)}
+.bprev{background:var(--teal-d);border-radius:14px;padding:22px;min-width:130px}
+.bprev-logo{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.bprev-ico{
+  width:24px;height:24px;background:#fff;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;color:var(--teal-d);font-weight:900;
+}
+.bprev-name{color:#fff;font-family:var(--fh);font-size:.78rem}
+.brow{display:flex;align-items:center;gap:8px;padding:5px 0}
+.bdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3)}
+.bline{height:4px;border-radius:2px;background:rgba(255,255,255,.18)}
+.brand-txt h2{font-family:var(--fh);font-size:1.9rem;line-height:1.3;color:var(--g700);margin-bottom:12px}
+.brand-txt h2 span{color:var(--teal);font-style:italic}
+.brand-txt p{color:var(--g500);font-size:.9rem;line-height:1.7;max-width:330px}
+
+/* ─── CONTACT ─── */
+.contact{background:linear-gradient(160deg,var(--g50) 0%,var(--teal-pale) 100%);padding:88px 6%}
+.contact-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.contact-info h2{font-family:var(--fh);font-size:clamp(1.8rem,3vw,2.5rem);color:var(--g700);line-height:1.25;margin-bottom:16px}
+.contact-info h2 span{color:var(--teal);font-style:italic}
+.contact-info p{color:var(--g500);font-size:.95rem;line-height:1.75;margin-bottom:36px}
+.cinfo-item{
+  display:flex;align-items:flex-start;gap:16px;
+  margin-bottom:24px;padding:18px 20px;
+  background:#fff;border-radius:14px;border:1.5px solid var(--g200);
+  box-shadow:var(--sh);transition:all var(--tr);cursor:default;
+}
+.cinfo-item:hover{border-color:var(--teal-l);transform:translateX(6px);box-shadow:var(--shl)}
+.cinfo-icon{
+  width:44px;height:44px;background:var(--teal-pale);border-radius:11px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:all var(--tr);
+}
+.cinfo-item:hover .cinfo-icon{background:var(--teal)}
+.cinfo-item:hover .cinfo-icon svg{fill:#fff}
+.cinfo-icon svg{width:20px;height:20px;fill:var(--teal);transition:fill var(--tr)}
+.cinfo-label{font-size:.75rem;color:var(--g500);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
+.cinfo-value{font-size:.95rem;font-weight:600;color:var(--g700)}
+.cinfo-value a{color:inherit;text-decoration:none;transition:color var(--tr)}
+.cinfo-value a:hover{color:var(--teal)}
+
+/* FORM */
+.cform{
+  background:#fff;border-radius:22px;padding:40px;
+  box-shadow:var(--shl);border:1.5px solid var(--g200);
+}
+.cform h3{font-family:var(--fh);font-size:1.5rem;color:var(--g700);margin-bottom:6px}
+.cform-sub{font-size:.85rem;color:var(--g500);margin-bottom:28px}
+.fgroup{margin-bottom:20px}
+label{display:block;font-size:.8rem;font-weight:700;color:var(--g700);margin-bottom:7px;letter-spacing:.02em}
+input,select,textarea{
+  width:100%;padding:13px 16px;
+  border:1.5px solid var(--g200);border-radius:10px;
+  font-family:var(--fb);font-size:.9rem;color:var(--g900);
+  background:#fff;outline:none;
+  transition:border-color var(--tr),box-shadow var(--tr),background var(--tr);
+}
+input:hover,select:hover,textarea:hover{border-color:var(--g500)}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--teal);
+  box-shadow:0 0 0 4px rgba(11,124,109,.1);
+  background:var(--teal-pale);
+}
+textarea{resize:vertical;min-height:110px}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%236b8e89'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-success{
+  display:none;text-align:center;padding:32px;
+  background:var(--teal-pale);border-radius:14px;
+}
+.form-success .tick{font-size:3rem;margin-bottom:12px}
+.form-success h4{font-family:var(--fh);font-size:1.3rem;color:var(--teal-d);margin-bottom:8px}
+.form-success p{font-size:.87rem;color:var(--g500)}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--g900);color:#fff;
+  padding:28px 6%;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;
+}
+.flogo{display:flex;align-items:center;gap:11px}
+.flogo-ico{
+  width:38px;height:38px;background:var(--teal);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform var(--tr);
+}
+.flogo-ico:hover{transform:rotate(-6deg)}
+.flogo-ico svg{width:20px;height:20px;fill:#fff}
+.flogo-name{font-family:var(--fh);font-size:1rem;display:block}
+.flogo-tag{font-size:.68rem;opacity:.5}
+.fcontacts{display:flex;gap:32px;flex-wrap:wrap}
+.fcontacts a{
+  color:rgba(255,255,255,.65);text-decoration:none;
+  font-size:.82rem;display:flex;align-items:center;gap:7px;
+  transition:color var(--tr),gap var(--tr);
+}
+.fcontacts a:hover{color:#fff;gap:10px}
+.fcopy{font-size:.73rem;opacity:.4;width:100%;text-align:center}
+
+/* ─── ANIMATIONS ─── */
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .feat-grid{grid-template-columns:repeat(4,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center;min-height:auto;padding:48px 6% 36px}
+  .hero-badge,.hero-tags,.hero-cta{justify-content:center}
+  .hero-visual{order:-1}
+  .impact{grid-template-columns:1fr;text-align:center}
+  .impact-pills{align-items:center}
+  .contact-inner{grid-template-columns:1fr}
+  .brand-banner{grid-template-columns:1fr;text-align:center}
+  .bprev{display:none}
+  .brand-txt p{max-width:100%}
+}
+@media(max-width:700px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .prob-grid{grid-template-columns:1fr;max-width:380px}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  section{padding:64px 5%}
+  .frow{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center}
+  .fcontacts{justify-content:center}
+  .cform{padding:28px 22px}
+  .brand-banner{padding:28px 24px}
+}
+@media(max-width:480px){
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
 </head>
-
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="logo">Vastora<span>Tech</span></a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#contact" class="nav-btn">Free Consultation</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-wrap">
-      <div>
-        <div class="hero-tag">Healthcare Digital Solutions</div>
-        <h1>Websites that earn <em>patient trust</em> and grow your practice.</h1>
-        <p>We build clean, high-converting digital experiences for hospitals and clinics — designed to increase
-          credibility and patient inquiries.</p>
-        <div class="hero-btns">
-          <a href="#contact" class="btn-primary">Book Free Consultation</a>
-          <a href="#portfolio" class="btn-outline">View Portfolio</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <h3>60+</h3>
-            <p>Projects Delivered</p>
-          </div>
-          <div class="stat">
-            <h3>98%</h3>
-            <p>Client Satisfaction</p>
-          </div>
-          <div class="stat">
-            <h3>7 Days</h3>
-            <p>Prototype Delivery</p>
-          </div>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="image/doct.jpg" alt="Healthcare">
-        <div class="hero-card">
-          <h4>+340% Inquiry Growth</h4>
-          <p>Average client result</p>
-        </div>
-        <div class="hero-mini">
-          <h3>60+</h3>
-          <span>Clinics Launched</span>
-        </div>
-      </div>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2v-5h2v5zm0-7h-2V7h2v2z"/></svg>
     </div>
-  </section>
+    <div>
+      <span class="logo-name">Vastora Tech</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#benifits">Benifits</a></li>
+    <li><a href="#demo">Demo</a></li> 
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn btn-primary nav-cta">Book Free Demo</a>
+  <button class="hamburger" id="hbg" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mnav">
+  <a href="#features" onclick="cm()">Features</a>
+  <a href="#pricing" onclick="cm()">Pricing</a>
+  <a href="#demo" onclick="cm()">Demo</a>
+  <a href="#contact" onclick="cm()">Contact</a>
+  <a href="#contact" class="btn btn-primary" onclick="cm()">Book Free Demo</a>
+</div>
 
-  <!-- TICKER -->
-  <div class="ticker">
-    <div class="ticker-track">
-      <span>Healthcare Websites</span><span>Hospital Platforms</span>
-      <span>Telemedicine Systems</span><span>Healthcare SEO</span>
-      <span>Doctor Booking Systems</span><span>Patient Portals</span>
-      <span>Healthcare Websites</span><span>Hospital Platforms</span>
-      <span>Telemedicine Systems</span><span>Healthcare SEO</span>
-      <span>Doctor Booking Systems</span><span>Patient Portals</span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-content fu">
+    <div class="hero-badge">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      Trusted by <strong>500+</strong> Hospitals &amp; Clinics &nbsp;
+      <span class="stars">★★★★★</span>
+    </div>
+    <h1>
+      <em>Apne</em> अस्पताल को<br>
+      Smart Management से<br>
+      <span class="highlight-pill">बेहतर बनाएं!</span>
+    </h1>
+    <p class="hero-sub">बेहतर Care के साथ बेहतर कल — one system for everything.</p>
+    <div class="hero-tags">
+      <span class="hero-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>HOSPITAL</span>
+      <span class="hero-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>CLINIC</span>
+      <span class="hero-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>LAB</span>
+      <span class="hero-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-2M9 3a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 3a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>PHARMACY</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary" style="padding:13px 28px;font-size:.93rem">Free Demo Book Kare &rarr;</a>
+      <a href="https://wa.me/918595658592" class="btn-wa">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp Now
+      </a>
     </div>
   </div>
+  <div class="hero-visual fu" style="transition-delay:.18s">
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="container">
-      <span class="section-tag">Our Services</span>
-      <h2 class="section-title">Solutions built for healthcare growth.</h2>
-      <p class="section-sub">From design to development — everything your practice needs to perform online.</p>
-      <div class="cards">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80"
-            alt="">
-          <div class="card-body">
-            <span class="badge">Websites</span>
-            <h3>Medical Website Design</h3>
-            <p>Clean, mobile-first websites that build patient trust and drive appointment bookings.</p>
-            <a href="#contact">Get Started →</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80"
-            alt="">
-          <div class="card-body">
-            <span class="badge">Mobile Apps</span>
-            <h3>Doctor Mobile Apps</h3>
-            <p>iOS and Android apps with booking, reminders, and teleconsultation features.</p>
-            <a href="#contact">Get Started →</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=800&q=80"
-            alt="">
-          <div class="card-body">
-            <span class="badge">Management Systems</span>
-            <h3>Hospital Management System</h3>
-            <p>Secure, scalable platforms for hospitals, clinics, and multi-location networks.</p>
-            <a href="#contact">Get Started →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="healthcare-card">
 
-  <!-- RESULTS -->
-  <section class="results">
-    <div class="container">
-      <div class="result-grid">
-        <div>
-          <h2>60+</h2>
-          <p>Projects Delivered</p>
-        </div>
-        <div>
-          <h2>98%</h2>
-          <p>Client Satisfaction</p>
-        </div>
-        <div>
-          <h2>7D</h2>
-          <p>Prototype Delivery</p>
-        </div>
-        <div>
-          <h2>24/7</h2>
-          <p>Support</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="doctor-card">
 
-  <!-- PROCESS -->
-  <section id="process">
-    <div class="container">
-      <span class="section-tag">Our Process</span>
-      <h2 class="section-title">How we work.</h2>
-      <div class="process-grid">
-        <div class="process-card">
-          <div class="process-num">01</div>
-          <h4>Discovery</h4>
-          <p>We understand your practice, goals, and target patients before anything else.</p>
-        </div>
-        <div class="process-card">
-          <div class="process-num">02</div>
-          <h4>Design</h4>
-          <p>Professional UI/UX prototypes built to maximise trust and conversions.</p>
-        </div>
-        <div class="process-card">
-          <div class="process-num">03</div>
-          <h4>Development</h4>
-          <p>Fast, secure, and mobile-optimised builds across all devices.</p>
-        </div>
-        <div class="process-card">
-          <div class="process-num">04</div>
-          <h4>Launch & Support</h4>
-          <p>Ongoing support, SEO, and growth assistance after going live.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section class="portfolio" id="portfolio">
-    <div class="container">
-      <span class="section-tag">Portfolio</span>
-      <h2 class="section-title">Recent work.</h2>
-      <div class="portfolio-grid">
-        <div class="portfolio-card">
-          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80"
-            alt="">
-          <div class="overlay">
-            <div>
-              <h3>CityCare Clinic</h3>
-              <p>Doctor Booking Platform</p>
+            <div class="doctor-image">
+                <img src="image/doct.jpg"
+                     alt="Doctor">
             </div>
-          </div>
-        </div>
-        <div class="portfolio-card">
-          <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=800&q=80"
-            alt="">
-          <div class="overlay">
-            <div>
-              <h3>MediCore HMS</h3>
-              <p>Hospital Management System</p>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-card">
-          <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80"
-            alt="">
-          <div class="overlay">
-            <div>
-              <h3>HealthPlus App</h3>
-              <p>Telemedicine Application</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="contact-wrap">
+            <div class="doctor-content">
+
+                <h3>Dr. Farhan </h3>
+
+                <p>Senior Cardiologist & Healthcare Specialist</p>
+
+                <div class="rating-box">
+                    <div class="rating">
+                        ★★★★★ 4.9 Rating
+                    </div>
+
+                    <div class="online">
+                        ● Available Now
+                    </div>
+                </div>
+
+                <div class="doc-stats">
+
+                    <div class="doc-stat">
+                        <strong>12+</strong>
+                        <span>Years Exp.</span>
+                    </div>
+
+                    <div class="doc-stat">
+                        <strong>5K+</strong>
+                        <span>Patients</span>
+                    </div>
+
+                    <div class="doc-stat">
+                        <strong>98%</strong>
+                        <span>Success Rate</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="floating-health float1">
+            <div class="float-icon">📅</div>
+
+            <div class="float-text">
+                <small>Appointments Today</small>
+                <strong>128 Patients</strong>
+            </div>
+        </div>
+
+        <div class="floating-health float2">
+            <div class="float-icon">❤️</div>
+
+            <div class="float-text">
+                <small>Patient Satisfaction</small>
+                <strong>98.7% Positive</strong>
+            </div>
+        </div>
+
+        <div class="floating-health float3">
+            <div class="float-icon">🚑</div>
+
+            <div class="float-text">
+                <small>Emergency Care</small>
+                <strong>24/7 Available</strong>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+<!-- PROBLEMS -->
+<section class="problems" id="features">
+  <p class="prob-subhead fu">
+    Healthcare chalana mushkil nahi...<br>
+    <span>System hona zaruri hai.</span>
+  </p>
+  <div class="prob-grid">
+    <div class="prob-card fu">
+      <div class="prob-icon" style="background:#fff1f1"><span>💬</span><div class="xbadge"></div></div>
+      <h3>Appointment Confusion</h3>
+      <p>Patients ko sahi samay par appointment ki jankari nahi milti, leading to missed visits.</p>
+    </div>
+    <div class="prob-card fu" style="transition-delay:.1s">
+      <div class="prob-icon" style="background:#fffbeb"><span>₹</span><div class="xbadge"></div></div>
+      <h3>Billing &amp; Payment Issues</h3>
+      <p>Manual billing, pending payments aur financial errors slow down your operations.</p>
+    </div>
+    <div class="prob-card fu" style="transition-delay:.2s">
+      <div class="prob-icon" style="background:#f0fdf4"><span>📁</span><div class="xbadge"></div></div>
+      <h3>No Centralized Records</h3>
+      <p>Patient records scattered across systems — access karna mushkil aur time-consuming.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section style="background:#fff" id="demo">
+  <div class="stitle fu">
+    <div class="stag">Our Platform</div>
+    <h2>Ek System, <span>Pura Hospital Management.</span></h2>
+    <p>Everything you need to run a modern healthcare facility — seamlessly unified in one powerful platform.</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card fu">
+      <div class="ficon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+      <h3>Patient Management</h3>
+    </div>
+    <div class="feat-card fu" style="transition-delay:.05s">
+      <div class="ficon"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div>
+      <h3>Appointment Management</h3>
+    </div>
+    <div class="feat-card fu" style="transition-delay:.1s">
+      <div class="ficon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></div>
+      <h3>OPD &amp; IPD Management</h3>
+    </div>
+    <div class="feat-card fu" style="transition-delay:.15s">
+      <div class="ficon"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+      <h3>Billing &amp; Payments</h3>
+    </div>
+    <div class="feat-card fu" style="transition-delay:.2s">
+      <div class="ficon"><svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.33C18 2.54 15.6 1 13 1c-1.12 0-2.08.5-2.79 1.25C9.71 1.5 8.75 1 7.62 1 5.08 1 3 2.79 3 5c0 .45.09.89.18 1.33H1v2h22V6h-3zm-7-3c.83 0 1.5.67 1.5 1.5S13.83 6 13 6s-1.5-.67-1.5-1.5S12.17 3 13 3zm-5.38 0c.83 0 1.5.67 1.5 1.5S8.45 6 7.62 6s-1.5-.67-1.5-1.5S6.79 3 7.62 3zM3 20h18V10H3v10zm7-7h4v2h-4v-2z"/></svg></div>
+      <h3>Pharmacy Management</h3>
+    </div>
+    <div class="feat-card fu" style="transition-delay:.25s">
+      <div class="ficon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg></div>
+      <h3>Lab Reports Management</h3>
+    </div>
+    <div class="feat-card fu" style="transition-delay:.3s">
+      <div class="ficon"><svg viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8z"/></svg></div>
+      <h3>Inventory Management</h3>
+    </div>
+    <div class="feat-card fu" style="transition-delay:.35s">
+      <div class="ficon"><svg viewBox="0 0 24 24"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.1h-15V5h15v14.1zm0-16.1h-15c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div>
+      <h3>Reports &amp; Analytics</h3>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<div class="impact">
+  <div class="impact-txt fu">
+    <h2>
+      कम समय में<br>
+      ज्यादा <em>Impact,</em><br>
+      यही है <em>Smart Hospital</em><br>
+      की पहचान!
+    </h2>
+  </div>
+  <div class="impact-doc fu" style="transition-delay:.12s">
+    <div class="idcard">
+      <div class="doc-av">👨‍⚕️</div>
+      <p>Better Care.<br>Better Health.<br>Better Tomorrow.</p>
+    </div>
+  </div>
+  <div class="impact-pills fu" style="transition-delay:.22s">
+    <div class="ipill"><div class="pico">⏱️</div>Save Time</div>
+    <div class="ipill"><div class="pico">😊</div>Happy Patients</div>
+    <div class="ipill"><div class="pico">📈</div>More Efficiency</div>
+    <div class="ipill"><div class="pico">❤️</div>Better Care</div>
+  </div>
+</div>
+
+<!-- WHY -->
+<section class="why" id="pricing">
+  <div class="stitle fu">
+    <div class="stag">Why Us</div>
+    <h2>Why Healthcare Providers Choose <span>Vastora Health?</span></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card fu"><div class="wico">⚡</div><h3>Fast Setup</h3><p>2–3 Days Setup</p></div>
+    <div class="why-card fu" style="transition-delay:.1s"><div class="wico">👆</div><h3>Easy to Use</h3><p>Beginner Friendly</p></div>
+    <div class="why-card fu" style="transition-delay:.2s"><div class="wico">🎧</div><h3>Full Support</h3><p>Dedicated Support</p></div>
+    <div class="why-card fu" style="transition-delay:.3s"><div class="wico">🎨</div><h3>Custom Branding</h3><p>Your Logo &amp; Identity</p></div>
+  </div>
+  <div class="brand-wrap">
+    <div class="brand-banner fu">
+      <div class="bprev">
+        <div class="bprev-logo">
+          <div class="bprev-ico">V</div>
+          <span class="bprev-name">VASTORA TECH</span>
+        </div>
+        <div class="brow"><div class="bdot"></div><div class="bline" style="width:52px"></div></div>
+        <div class="brow"><div class="bdot"></div><div class="bline" style="width:70px"></div></div>
+        <div class="brow"><div class="bdot"></div><div class="bline" style="width:60px"></div></div>
+        <div class="brow"><div class="bdot"></div><div class="bline" style="width:44px"></div></div>
+      </div>
+      <div class="brand-txt">
+        <h2>Apna Hospital.<br>Apna Brand.<br>Apni <span>Pehchaan.</span></h2>
+        <p>Aapka khud ka branded HMS Website jo patients aur staff dono ko impress kare — fully customised to your identity.</p>
+      </div>
+      <div><a href="#contact" class="btn btn-primary" style="font-size:.92rem;padding:13px 28px">Book Free Demo &rarr;</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info fu">
+      <div class="stag" style="text-align:left">Get In Touch</div>
+      <h2>Let's Build Your <span>Smart Hospital</span> Together</h2>
+      <p>Ready to transform your healthcare facility? Fill out the form or reach us directly — our team responds within 2 hours.</p>
+
+      <div class="cinfo-item">
+        <div class="cinfo-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
         <div>
-          <span class="section-tag" style="color:#BFD7F0;">Contact Us</span>
-          <h2>Let's grow your practice online.</h2>
-          <p>Tell us about your goals and we'll put together a clear, tailored strategy for your brand.</p>
+          <div class="cinfo-label">Email Us</div>
+          <div class="cinfo-value"><a href="mailto:info@vastorahealth.in">info@vastorahealth.in</a></div>
         </div>
-        <div class="contact-box">
-          <h3>Book a Free Consultation</h3>
-          <p>We'll get back to you within 24 hours.</p>
-          <div class="form-group"><input type="text" id="fullName" placeholder="Full Name"></div>
-          <div class="form-group"><input type="email" id="email" placeholder="Email Address"></div>
-          <div class="form-group"><input type="tel" id="phone" placeholder="Phone Number"></div>
-          <div class="form-group">
-            <select id="service">
-              <option value="">Select Service</option>
-              <option>Medical Website</option>
-              <option>Doctor App</option>
-              <option>Hospital Management System</option>
-              <option>Healthcare SEO</option>
-            </select>
+      </div>
+      <div class="cinfo-item">
+        <div class="cinfo-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
+        <div>
+          <div class="cinfo-label">Call Us</div>
+          <div class="cinfo-value"><a href="tel:+918595658592">+91-8595658592</a></div>
+        </div>
+      </div>
+      <div class="cinfo-item">
+        <div class="cinfo-icon">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </div>
+        <div>
+          <div class="cinfo-label">WhatsApp</div>
+          <div class="cinfo-value"><a href="https://wa.me/918595658592" target="_blank">Chat with us instantly</a></div>
+        </div>
+      </div>
+      <div class="cinfo-item">
+        <div class="cinfo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <div class="cinfo-label">Office</div>
+          <div class="cinfo-value">New Delhi, India</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cform fu" style="transition-delay:.16s">
+      <h3>Book Your Free Demo</h3>
+      <p class="cform-sub">Fill in the details — we'll set everything up for you.</p>
+      <div id="formWrap">
+        <div class="frow">
+          <div class="fgroup">
+            <label for="fname">Full Name *</label>
+            <input type="text" id="fname" placeholder="Dr. Amit Sharma" required>
           </div>
-          <div class="form-group"><textarea id="message" placeholder="Tell us about your project"></textarea></div>
-          <button class="form-btn" onclick="sendToWhatsApp()">Send Inquiry via WhatsApp</button>
+          <div class="fgroup">
+            <label for="fphone">Phone Number *</label>
+            <input type="tel" id="fphone" placeholder="+91 98765 43210" required>
+          </div>
         </div>
+        <div class="fgroup">
+          <label for="femail">Email Address *</label>
+          <input type="email" id="femail" placeholder="you@hospital.com" required>
+        </div>
+        <div class="fgroup">
+          <label for="ftype">Facility Type *</label>
+          <select id="ftype">
+            <option value="" disabled selected>Select your facility type</option>
+            <option>Hospital</option>
+            <option>Clinic</option>
+            <option>Diagnostic Lab</option>
+            <option>Pharmacy</option>
+            <option>Multi-Specialty Centre</option>
+          </select>
+        </div>
+        <div class="frow">
+          <div class="fgroup">
+            <label for="fcity">City</label>
+            <input type="text" id="fcity" placeholder="New Delhi">
+          </div>
+          <div class="fgroup">
+            <label for="fbeds">No. of Beds / Doctors</label>
+            <input type="text" id="fbeds" placeholder="e.g. 50 beds, 10 doctors">
+          </div>
+        </div>
+        <div class="fgroup">
+          <label for="fmsg">Message (Optional)</label>
+          <textarea id="fmsg" placeholder="Tell us about your requirements..."></textarea>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;padding:14px;font-size:.95rem" onclick="submitForm()">
+          🚀 Book Free Demo Now
+        </button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="tick">✅</div>
+        <h4>Demo Booked Successfully!</h4>
+        <p>Our team will contact you within 2 hours to schedule your personalised demo session.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo">Vastora<span>Tech</span></div>
-        <p class="footer-about">Premium healthcare websites, apps, and management platforms — designed to grow your
-          practice and build patient trust.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#">Medical Websites</a></li>
-          <li><a href="#">Doctor Apps</a></li>
-          <li><a href="#">Healthcare SEO</a></li>
-          <li><a href="#">Telemedicine</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Process</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="tel:+918595658592">+91 85956 58592</a></li>
-          <li><a href="mailto:hello@vastorahealth.com">vastoratech@gmail.com</a></li>
-          <li><a href="#">New Delhi, India</a></li>
-        </ul>
-      </div>
+<!-- FOOTER -->
+<footer>
+  <div class="flogo">
+    <div class="flogo-ico">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2v-5h2v5zm0-7h-2V7h2v2z"/></svg>
     </div>
-    <div class="footer-bottom">
-      <div>© 2026 VastoraTech. All Rights Reserved.</div>
-      <div>Premium Healthcare Digital Solutions.</div>
+    <div>
+      <span class="flogo-name">Vastora TECH</span>
+      <span class="flogo-tag">Care. Simplified.</span>
     </div>
-  </footer>
+  </div>
+  <div class="fcontacts">
+    <a href="mailto:info@vastorahealth.in">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      vastoratech@gmail.com
+    </a>
+    <a href="tel:+918595658592">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      +91-8595658592
+    </a>
+    <a href="#contact">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      Book Demo
+    </a>
+  </div>
+  <div class="fcopy">© 2024 Vastora Health. All Rights Reserved.</div>
+</footer>
 
-  <script>
-    // FAQ
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.querySelector('.faq-question').addEventListener('click', () => {
-        document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('active'); });
-        item.classList.toggle('active');
-      });
-    });
+<script>
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20));
 
-    // WhatsApp
-    function sendToWhatsApp() {
-      const whatsappNumber = "918595658592";
-      const name = document.getElementById("fullName").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const service = document.getElementById("service").value.trim();
-      const message = document.getElementById("message").value.trim();
+// Hamburger
+const hbg=document.getElementById('hbg'),mn=document.getElementById('mnav');
+hbg.addEventListener('click',()=>{
+  hbg.classList.toggle('open');
+  mn.classList.toggle('open');
+  document.body.style.overflow=mn.classList.contains('open')?'hidden':'';
+});
+function cm(){hbg.classList.remove('open');mn.classList.remove('open');document.body.style.overflow='';}
 
-      if (!name || !email || !phone || !service) {
-        alert("Please fill in all required fields.");
-        return;
-      }
+// Fade-up observer
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
 
-      const text =
-        `*New Inquiry — VastoraTech*\n\n` +
-        `👤 *Name:* ${name}\n` +
-        `📧 *Email:* ${email}\n` +
-        `📞 *Phone:* ${phone}\n` +
-        `🩺 *Service:* ${service}\n` +
-        `💬 *Message:* ${message || "N/A"}`;
-
-      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
-    }
-  </script>
-
+// Form submit
+function submitForm(){
+  const n=document.getElementById('fname').value.trim();
+  const p=document.getElementById('fphone').value.trim();
+  const e=document.getElementById('femail').value.trim();
+  const t=document.getElementById('ftype').value;
+  if(!n||!p||!e||!t){
+    alert('Please fill in all required fields.');return;
+  }
+  document.getElementById('formWrap').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+</script>
 </body>
-
 </html>
